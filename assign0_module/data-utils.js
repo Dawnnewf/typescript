@@ -25,8 +25,9 @@ function groupBy(items, property) {
 function mapObject(obj, fn) {
     const result = {};
     for (const key in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
-            result[key] = fn(obj[key], key, obj);
+        if (Object.hasOwnProperty.call(obj, key)) {
+            const typedKey = key;
+            result[typedKey] = fn(obj[typedKey], typedKey, obj);
         }
     }
     return result;

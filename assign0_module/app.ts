@@ -23,7 +23,7 @@ console.log(electronicsProducts);
 const groupedByCategory = groupBy(products, 'category');
 console.log(groupedByCategory);
 
-const prices = mapObject(products, (product) => product.price);
+const prices = mapObject(products, (product) => (product as Product).price);
 console.log(prices);
 
 interface User extends Identifiable {

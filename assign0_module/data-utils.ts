@@ -25,11 +25,12 @@ export function groupBy<T, K extends keyof T>(items: T[], property: K): Record<s
 }
 
 export function mapObject<T extends object, K extends keyof T, V>(obj: T, fn: (value: T[K], key: K, obj: T) => V): Record<keyof T, V> {
-    const result = {} as Record<keyof T, V>;
+    const result: Record<keyof T, V> = {} as Record<keyof T, V>;
 
     for (const key in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
-            result[key] = fn(obj[key], key, obj);
+        if (Object.hasOwnProperty.call(obj, key)) {
+            const typedKey = key as unknown as K;
+            result[typedKey] = fn(obj[typedKey], typedKey, obj);
         }
     }
     return result;
